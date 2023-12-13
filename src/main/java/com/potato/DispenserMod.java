@@ -1,8 +1,9 @@
 package com.potato;
 
+import com.potato.block.BlockDispenserBlock;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -24,14 +25,13 @@ public class DispenserMod implements ModInitializer {
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
     public static final Logger LOGGER = LoggerFactory.getLogger("dispensermod");
-	public static final Block BLOCK_DISPENSER = new Block(FabricBlockSettings.copyOf(OAK_PLANKS));
+	public static int DISPENSER_LIMIT = 12;
+	public static final Block BLOCK_DISPENSER = new BlockDispenserBlock(FabricBlockSettings.copyOf(OAK_PLANKS));
 	public void regBlock(String BlockName, Block block, RegistryKey<ItemGroup> group) {
 		Registry.register(Registries.BLOCK, new Identifier("dispensermod", BlockName), block);
 		Item item = new BlockItem(block, new Item.Settings());
 		Registry.register(Registries.ITEM, new Identifier("dispensermod", BlockName), item);
-		ItemGroupEvents.modifyEntriesEvent(group).register(itemGroup -> {
-			itemGroup.add(item);
-		});
+		ItemGroupEvents.modifyEntriesEvent(group).register(itemGroup -> itemGroup.add(item));
 	}
 	@Override
 	public void onInitialize() {
