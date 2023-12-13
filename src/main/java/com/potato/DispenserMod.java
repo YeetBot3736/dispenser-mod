@@ -24,7 +24,7 @@ public class DispenserMod implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
-    public static final Logger LOGGER = LoggerFactory.getLogger("dispensermod");
+        public static final Logger LOGGER = LoggerFactory.getLogger("dispensermod");
 	public static int DISPENSER_LIMIT = 12;
 	public static final Block BLOCK_DISPENSER = new BlockDispenserBlock(FabricBlockSettings.copyOf(OAK_PLANKS));
 	public void regBlock(String BlockName, Block block, RegistryKey<ItemGroup> group) {
