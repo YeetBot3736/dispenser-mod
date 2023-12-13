@@ -26,9 +26,9 @@ public class DispenserMod implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("dispensermod");
 	public static final Block BLOCK_DISPENSER = new Block(FabricBlockSettings.copyOf(OAK_PLANKS));
 	public void regBlock(String BlockName, Block block, RegistryKey<ItemGroup> group) {
-		Registry.register(Registries.BLOCK, new Identifier("avocados", BlockName), block);
+		Registry.register(Registries.BLOCK, new Identifier("dispensermod", BlockName), block);
 		Item item = new BlockItem(block, new Item.Settings());
-		Registry.register(Registries.ITEM, new Identifier("avocados", BlockName), item);
+		Registry.register(Registries.ITEM, new Identifier("dispensermod", BlockName), item);
 		ItemGroupEvents.modifyEntriesEvent(group).register(itemGroup -> {
 			itemGroup.add(item);
 		});
